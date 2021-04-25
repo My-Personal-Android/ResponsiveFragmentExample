@@ -41,13 +41,14 @@ public class MainActivity extends AppCompatActivity implements MasterListFragmen
 
             // Change the GridView to space out the images more on tablet
             GridView gridView = (GridView) findViewById(R.id.images_grid_view);
-            gridView.setNumColumns(2);
+            gridView.setNumColumns(1);
 
             // Getting rid of the "Next" button that appears on phones for launching a separate activity
             Button nextButton = (Button) findViewById(R.id.next_button);
             nextButton.setVisibility(View.GONE);
 
             if(savedInstanceState == null) {
+
                 // In two-pane mode, add initial BodyPartFragments to the screen
                 FragmentManager fragmentManager = getSupportFragmentManager();
 
@@ -73,7 +74,10 @@ public class MainActivity extends AppCompatActivity implements MasterListFragmen
                         .add(R.id.leg_container, legFragment)
                         .commit();
             }
-        } else {
+        }
+
+        else
+            {
             // We're in single-pane mode and displaying fragments on a phone in separate activities
             mTwoPane = false;
         }
@@ -86,11 +90,11 @@ public class MainActivity extends AppCompatActivity implements MasterListFragmen
         Toast.makeText(this, "Position clicked = " + position, Toast.LENGTH_SHORT).show();
 
         // bodyPartNumber will be = 0 for the head fragment, 1 for the body, and 2 for the leg fragment
-        // Dividing by 12 gives us these integer values because each list of images resources has a size of 12
+        // Dividing by 3 gives us these integer values because each list of images resources has a size of 3
         int bodyPartNumber = position / 3;
 
         // Store the correct list index no matter where in the image list has been clicked
-        // This ensures that the index will always be a value between 0-11
+        // This ensures that the index will always be a value between 0-2
         int listIndex = position - 3 * bodyPartNumber;
 
         // Handle the two-pane case and replace existing fragments right when a new image is selected from the master list
@@ -128,7 +132,8 @@ public class MainActivity extends AppCompatActivity implements MasterListFragmen
                 default:
                     break;
             }
-        } else {
+        }
+        else {
 
             // Handle the single-pane phone case by passing information in a Bundle attached to an Intent
 
