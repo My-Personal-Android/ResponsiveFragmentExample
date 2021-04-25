@@ -10,7 +10,7 @@
  See the License for the specific language governing permissions and
  limitations under the License.-->
 
-<!-- Display the static master list fragment -->
+<!-- Display the static master list fragment this will instantiate the masterlist fragment-->
 <fragment
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/master_list_fragment"
